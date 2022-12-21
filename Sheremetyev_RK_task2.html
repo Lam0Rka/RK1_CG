@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<BODY>
+<canvas id='homework4' width="1000px" height="1000px"></canvas>
+<p id='demo'></p>
+<script>
+    function count_error(R, n) {
+        let x = 0,
+            y = R,
+            error = 1 - R,
+            count = 0;
+        while (x <= y && count < n) {
+            if (error > 0) {
+                y -= 1;
+                error += 2 * (x - y) + 5
+            } else {
+                error += 2 * x + 3;
+            }
+            x += 1;
+            ++count;
+        }
+        return error;
+    }
+    alert(count_error(100, 30));
+</script>
+</BODY>
+</html>

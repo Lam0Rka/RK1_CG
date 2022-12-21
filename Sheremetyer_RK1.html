@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function error_count(x1, y1, x2, y2, n) {
+        let dx = x2 - x1,
+            dy = y2 - y1;
+
+        let sign_x = Math.sign(dx),
+            sign_y = Math.sign(dy);
+
+        let x = x1,
+            y = y1,
+            error = 0,
+            count = 0;
+
+        if (Math.abs(dx) > Math.abs(dy)) {
+            while (x !== x2 && count < n) {
+                ++count;
+                error += Math.abs(dy) + 1;
+                if (Math.abs(error) >= Math.abs(dx) + 1) {
+                    y += sign_y;
+                    error -= Math.abs(dx) + 1;
+                }
+                x += sign_x;
+            }
+        } else {
+            while (y !== y2 && count < n) {
+                ++count;
+                error += Math.abs(dx) + 1;
+                if (Math.abs(error) >= Math.abs(dy) + 1) {
+                    x += sign_x;
+                    error -= Math.abs(dy) + 1;
+                }
+                y += sign_y;
+            }
+        }
+        return error;
+    }
+
+    alert(error_count(300, 300, 495, 341, 16));
+</script>
+</body>
+</html>
